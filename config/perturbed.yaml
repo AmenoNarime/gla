@@ -1,0 +1,29 @@
+experiment_type: gla_visualization
+
+audio:
+  sr: 22050
+  duration: 2.0
+  f0: 430
+  tau: 0.6
+
+stft:
+  n_fft: 1024
+  win_length: null
+  hop_length: 256
+  window: "hann"
+  center: true
+  pad_mode: "constant"
+
+gla:
+  n_iter: 200
+  # Note: Standard GLA function in audio_processing.py uses these too,
+  # but our custom loop in gla_visualization will read from 'stft' mostly for consistency.
+  n_fft: 1024
+  hop_length: 256
+  window: "hann"
+  # New initialization parameters
+  init_type: "perturbed"
+  noise_scale: 2  # radian. +/- 2 rad noise
+
+output:
+  output_dir: output/perturbed
